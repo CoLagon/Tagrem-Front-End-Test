@@ -41,23 +41,35 @@ function transfer(options) {
        // console.log(sc);
     } else {
        productNum = options.target.innerHTML.match(/\d+/)[0];
-	 // console.log(productNum);
      }
 	for (var key in products) {
 	   if (products.hasOwnProperty(key)) {
 	      	obj = products[key];
       }
-      console.log(sc + " " + obj.src );
-      console.log(sc == obj.src);
-      console.log(" ");
-      console.log(productNum + " " + obj.id);
-      console.log(productNum == obj.id);
       if (productNum == obj.id || sc == obj.src) {
       	grid = document.getElementById('grid1');
       	grid.getElementsByTagName('p')[0].innerHTML = obj.title;
       	grid.getElementsByTagName('p')[1].innerHTML = obj.price;
       	grid.getElementsByTagName('p')[2].innerHTML = obj.desc;
-        photo = grid.getElementsByTagName('image').src = JSON.stringify(obj.src);
+        photo = grid.getElementsByTagName('image').src = obj.src;
+        console.log(photo);
+        photo.src = obj.src;
+       var pp = document.getElementById('productPicture');
+       var im = document.createElement('IMG');
+       var change = im.setAttribute("src", obj.src);
+       im.classList.add('img-responsive');
+
+       pp.appendChild(im);
+       var child = pp.children;
+       
+          if(child.length >= 2) {
+            for(var j = 0; j < child.length; j++) {
+              pp.removeChild(child[j]);
+              pp.appendChild(child[j+1]);
+            
+            }
+        }
+          
       }
 	}
 }

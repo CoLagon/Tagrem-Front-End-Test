@@ -14,7 +14,12 @@
 </head>
 
 <body>
-    <img class="banner noHover" src="images/banner.jpg">
+<div class="wrapper">
+    <div class="wrapper">
+        <img class="banner" src="images/banner.jpg">
+    </div>
+        <h4>Connect<p class="vr"></p><p class="vr"></p><img src="images/twitter.png"><p class="vr"></p><img src="images/fb.png"><p class="vr"></p><img src="images/pinterest.png"><p class="vr"></p><img src="images/blog.png"><p class="vr"></p><img src="images/email.png"></h4>
+</div>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-7 col-xs-12">
@@ -26,7 +31,7 @@
                 <div class="card4">
                     <div class="wrapper">
                         <h2 id="cardTitle">State Finder</h2>
-                        <p>Morbi ac hendrerit nulla. Sed nec ex commodo</p>
+                        <p id="cardSubtitle">Morbi ac hendrerit nulla. Sed nec ex commodo</p>
                         <!-- <input type="text" id="default" list="states" placeholder="Search Hotels"> -->
                         <div class="input-group">
                             <input class="form-control" placeholder="Search Hotels" id="search" type="text" list="states" onkeyup="searchSel()">
@@ -257,7 +262,7 @@
                             <p class="pMore">Lorem Epson</p>
                         </div>
                         <div class="row">
-                            <a class="btnBuy" href="http://www.amazon.com" target="_blank" >Buy Online<img src="images/arrow-btn-white.png"></a>
+                            <a class="btnBuy btn" href="http://www.amazon.com" target="_blank" >Buy Online<img src="images/arrow-btn-white.png"></a>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -266,8 +271,8 @@
                                 <img src="images/close.png" id='close'>
                             </div>
                         </div>
-                        <div class="row">
-                            <img src="images/flower_b.jpg" class="img-responsive" id="image">
+                        <div class="row" id="productPicture">
+                           <!--  <img src="images/flower_b.jpg" class="img-responsive" id="image"> -->
                         </div>
                     </div>
                 </div>
