@@ -1,82 +1,71 @@
 var thenum;
-var product;
 
 window.onload = function() {
-	cardTitle();
-	clicky();
+    searchSel();
+    getElementsBy();
+    clicky();
+    close();
+    cardTitle();
+    cardPhoto();
 };
-// };
-// function productt() {
-// 	for (var key in products) {
-// 	   if (products.hasOwnProperty(key)) {
-// 	      	var obj = products[key];
-// 	      for (var prop in obj) {
-// 	         if (obj.hasOwnProperty(prop)) {
-// 	            // console.log(prop + " = " + obj[prop]);
-// 	            // console.log(obj.price);
-// 	            // var _price = obj.price;
-// 	            // thenum = _price.match(/\d+/)[0];
-// 	            // listen('click', product, transfer);           
-// 	            product = obj[prop];
-// 	 			// transfer(product);
-// 	         }
-//          }
-//       }
-// 	}
-// }
 
-// function cards() {
-// 	var ul, li, i;
-// 	ul = document.getElementById('pdt');
-//     li = ul.getElementsByTagName("li");
-//     	for (i = 0; i < li.length; i++) {
-//     		listen('click', li[i], transfer);
-//     		transfer(li[i]);
-//     		console.log(li[i]);
-//     	}
-// }
 function cardTitle() {
 	var ul, h3, i;
 	ul = document.getElementById('pdt');
 	h3 = ul.getElementsByTagName('h3');
 		for (i = 0; i < h3.length; i++) {
 			listen('click', h3[i], transfer);
-			transfer(h3[i]);
+				if( h3[i].event) {
+					transfer(h3[i]);
+				}
 		}
 }
-function transfer(card) {
-	var grid, productNum, obj;
+function cardPhoto() {
+    var ul, img, i;
+    ul = document.getElementById('pdt');
+    img = ul.getElementsByTagName('img');
+        for(i = 0; i < img.length; i++) {
+            listen('click', img[i], transfer);
+                if(img[i].event) {
+                    console.log('hi');
+                    transfer(img[i]);
+                }
+        }
+}
+function transfer(options) {
+	var grid, productNum, obj, photo, sc;
 	open();
-	console.log('tranfer()');
-	 productNum = card.innerHTML.match('/\d+/')[0];
-	 console.log(productNum);
+    console.log(options);
+    if(options.target.localName == "img") {
+         sc = options.target.attributes[0].nodeValue;
+       // console.log(sc);
+    } else {
+       productNum = options.target.innerHTML.match(/\d+/)[0];
+	 // console.log(productNum);
+     }
 	for (var key in products) {
 	   if (products.hasOwnProperty(key)) {
 	      	obj = products[key];
       }
-      if (productNum == obj.id) {
+      console.log(sc + " " + obj.src );
+      console.log(sc == obj.src);
+      console.log(" ");
+      console.log(productNum + " " + obj.id);
+      console.log(productNum == obj.id);
+      if (productNum == obj.id || sc == obj.src) {
       	grid = document.getElementById('grid1');
-      	grid.getElementsByTagName('p')[0].value = obj.title;
-      	grid.getElementsByTagName('p')[1].value = obj.price;
-      	grid.getElementsByTagName('p')[2].value = obj.desc;
+      	grid.getElementsByTagName('p')[0].innerHTML = obj.title;
+      	grid.getElementsByTagName('p')[1].innerHTML = obj.price;
+      	grid.getElementsByTagName('p')[2].innerHTML = obj.desc;
+        photo = grid.getElementsByTagName('image').src = JSON.stringify(obj.src);
       }
 	}
-
-
-	// console.log(product);
-	// var like, tired;
-	// var its = listItem.foreach(getElementsByTagName('h3').value.match(/\d+/)[0]);
-		// var nice = listItem.getElementsByTagName('h3');
-		// for (i = 0; i < nice.length; ++i) {
-	 //    var newValue = nice[i].innerHTML.match(/\d+/)[0];
-
-	// }
-	// var listItem = thenum.getElementsByTagName('li');
-	// console.log(listItem);
-
-
 }
 
+var options = {
+    cardTitle:cardTitle,
+    cardPhoto: cardPhoto
+};
 function clicky() {
 	var closeBtn = document.getElementById('close');
 	listen('click', closeBtn, close);
@@ -100,8 +89,6 @@ function open() {
     		for (plus = 0; plus < li.length; plus++) {
     			console.log(li[plus]);
     			p = li[plus].getElementsByTagName('p')[0].innerText.match(/\d+/)[0];
-    			// p = li[plus].getElementsByTagName('p')[0];
-    			// console.log(p.innerHTML.match(/\d+/)[0]);
     			if(e.selectedIndex == 0) {
     					li[plus].style.display = "";
     			}

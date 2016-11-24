@@ -1,10 +1,4 @@
-window.onload = function() {
-    searchSel();
-    getElementsBy();
-    // cards();
-    // clicked();
-    // cardTitle();
-};
+var a;
 
 function listen(evnt, elem, func) {
     if (elem.addEventListener)  // W3C DOM
@@ -39,7 +33,6 @@ function searchSel() {
                 }
                 console.log();
                 listen('click', li[i], addInput);
-                li[i].addEventListener('click', addInput, false);
             }
         }
 }
