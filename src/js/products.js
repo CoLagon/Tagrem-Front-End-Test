@@ -35,41 +35,43 @@ function cardPhoto() {
 function transfer(options) {
 	var grid, productNum, obj, photo, sc;
 	open();
-    console.log(options);
+    console.log(obj);
     if(options.target.localName == "img") {
          sc = options.target.attributes[0].nodeValue;
        // console.log(sc);
     } else {
-       productNum = options.target.innerHTML.match(/\d+/)[0];
+       productNum = options.target.innerHTML;
+       console.log(productNum);
      }
 	for (var key in products) {
 	   if (products.hasOwnProperty(key)) {
 	      	obj = products[key];
       }
-      if (productNum == obj.id || sc == obj.src) {
+      if (productNum == obj.title || sc == obj.src) {
       	grid = document.getElementById('grid1');
+        console.log(obj);
       	grid.getElementsByTagName('p')[0].innerHTML = obj.title;
       	grid.getElementsByTagName('p')[1].innerHTML = obj.price;
       	grid.getElementsByTagName('p')[2].innerHTML = obj.desc;
-        photo = grid.getElementsByTagName('image').src = obj.src;
-        console.log(photo);
-        photo.src = obj.src;
+        // photo = grid.getElementsByTagName('image').src = obj.src;
+        // photo.src = obj.src;
        var pp = document.getElementById('productPicture');
        var im = document.createElement('IMG');
        var change = im.setAttribute("src", obj.src);
        im.classList.add('img-responsive');
-
        pp.appendChild(im);
        var child = pp.children;
        
           if(child.length >= 2) {
             for(var j = 0; j < child.length; j++) {
               pp.removeChild(child[j]);
-              pp.appendChild(child[j+1]);
-            
-            }
-        }
+            } 
+        } else {
+          console.log("hello");
           
+      } 
+        } else {
+        console.log("mission failed");
       }
 	}
 }
