@@ -27,7 +27,6 @@ function cardPhoto() {
         for(i = 0; i < img.length; i++) {
             listen('click', img[i], transfer);
                 if(img[i].event) {
-                    console.log('hi');
                     transfer(img[i]);
                 }
         }
@@ -35,13 +34,11 @@ function cardPhoto() {
 function transfer(options) {
 	var grid, productNum, obj, photo, sc;
 	open();
-    console.log(obj);
     if(options.target.localName == "img") {
          sc = options.target.attributes[0].nodeValue;
        // console.log(sc);
     } else {
        productNum = options.target.innerHTML;
-       console.log(productNum);
      }
 	for (var key in products) {
 	   if (products.hasOwnProperty(key)) {
@@ -49,7 +46,6 @@ function transfer(options) {
       }
       if (productNum == obj.title || sc == obj.src) {
       	grid = document.getElementById('grid1');
-        console.log(obj);
       	grid.getElementsByTagName('p')[0].innerHTML = obj.title;
       	grid.getElementsByTagName('p')[1].innerHTML = obj.price;
       	grid.getElementsByTagName('p')[2].innerHTML = obj.desc;
@@ -61,17 +57,12 @@ function transfer(options) {
        im.classList.add('img-responsive');
        pp.appendChild(im);
        var child = pp.children;
-       
+
           if(child.length >= 2) {
             for(var j = 0; j < child.length; j++) {
               pp.removeChild(child[j]);
-            } 
-        } else {
-          console.log("hello");
-          
-      } 
-        } else {
-        console.log("mission failed");
+            }
+        }
       }
 	}
 }
@@ -107,7 +98,7 @@ function open() {
     					li[plus].style.display = "";
     			}
     			if(e.selectedIndex == 1) {
-    				if (p < 500) {      
+    				if (p < 500) {
     					li[plus].style.display = "";
     				} else {
     					li[plus].style.display = "none";
@@ -136,6 +127,4 @@ function open() {
     			}
 
     		}
-	}	
-
-	
+	}
